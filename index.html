@@ -63,7 +63,6 @@
             padding: 0 1rem;
         }
 
-        /* Section Styling */
         .section-title {
             color: var(--cockleshell);
             border-bottom: 2px solid var(--cockleshell-light);
@@ -75,7 +74,6 @@
             gap: 10px;
         }
 
-        /* Grid and Popup Cards */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -122,7 +120,6 @@
             align-self: flex-end;
         }
 
-        /* Modal / Popup Styling */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -172,7 +169,6 @@
             padding-right: 2rem;
         }
 
-        /* Tables */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -197,7 +193,6 @@
             background-color: #fcfaff;
         }
 
-        /* Code/Text block */
         pre, code {
             background-color: #281e2d;
             color: #f0e6f5;
@@ -211,7 +206,6 @@
             white-space: pre-wrap;
         }
 
-        /* Visual Reference / Figures Section */
         .figures-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -232,19 +226,18 @@
 
         .figure-img-wrapper {
             background-color: var(--lilac-card);
-            min-height: 200px;
+            min-height: 220px;
+            padding: 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
             border-bottom: 1px solid var(--lilac-border);
-            overflow: hidden;
         }
 
-        .figure-img-wrapper img {
+        .figure-img-wrapper svg {
             width: 100%;
             height: auto;
-            display: block;
-            object-fit: cover;
+            max-height: 200px;
         }
 
         .figure-caption {
@@ -273,7 +266,6 @@
             text-decoration: underline;
         }
 
-        /* Diagram / Image Frame Component */
         .diagram-container {
             background-color: var(--lilac-card);
             border: 2px dashed var(--lilac-accent);
@@ -318,7 +310,6 @@
             font-size: 1.2rem;
         }
 
-        /* Quiz Container */
         .quiz-container {
             background: var(--white);
             border: 1px solid var(--lilac-border);
@@ -386,7 +377,6 @@
             background: var(--cockleshell-light);
         }
 
-        /* Results & Answer Key */
         .result-box {
             display: none;
             background: var(--lilac-card);
@@ -406,7 +396,6 @@
             margin: 1rem 0;
         }
 
-        /* Glitching Shining Star Animation */
         .star-container {
             display: none;
             margin: 1rem auto;
@@ -509,7 +498,6 @@
 
     <div class="container">
         
-        <!-- CORE ARCHITECTURE MODULES -->
         <h2 class="section-title">💡 Core Architecture & Technical Foundations</h2>
         <p style="margin-bottom: 1.5rem;">Click on any module to open detailed technical specifications, architectural breakdowns, structural schemas, and operational boundaries.</p>
 
@@ -581,18 +569,47 @@
 
         </div>
 
-        <!-- FIGURES & VISUAL ARCHITECTURE REFERENCE SECTION -->
         <h2 class="section-title">🖼️ System Figures & Visual Diagrams</h2>
-        <p style="margin-bottom: 1.5rem;">Visual architecture diagrams, standard schemas, and operational flowcharts illustrating Skills and Connectors mechanics.</p>
+        <p style="margin-bottom: 1.5rem;">Visual architecture diagrams, standard schemas, and operational flowcharts illustrating Skills and Connectors mechanics (embedded directly via inline SVG for guaranteed zero-404 Vercel rendering).</p>
 
         <div class="figures-grid">
             <div class="figure-card">
                 <div class="figure-img-wrapper">
-                    <img src="https://agentskills.io/assets/agent-skills-architecture.png" alt="Agent Skills Standard Architecture" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x300/f0ebf8/993300?text=Agent+Skills+Architecture+Diagram';">
+                    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="#f8f6fc" rx="6"/>
+                        <rect x="20" y="20" width="130" height="180" rx="6" fill="#ffffff" stroke="#993300" stroke-width="2"/>
+                        <text x="85" y="45" font-family="sans-serif" font-size="12" font-weight="bold" fill="#993300" text-anchor="middle">SKILL.md</text>
+                        <rect x="30" y="60" width="110" height="30" rx="4" fill="#f0ebf8" stroke="#7b52ab" stroke-width="1"/>
+                        <text x="85" y="79" font-family="sans-serif" font-size="10" fill="#221828" text-anchor="middle">Frontmatter</text>
+                        <rect x="30" y="100" width="110" height="40" rx="4" fill="#ffffff" stroke="#dcd0ee" stroke-width="1"/>
+                        <text x="85" y="124" font-family="sans-serif" font-size="10" fill="#5a4b66" text-anchor="middle">Instructions Body</text>
+                        <rect x="30" y="150" width="110" height="38" rx="4" fill="#ffffff" stroke="#dcd0ee" stroke-width="1"/>
+                        <text x="85" y="173" font-family="sans-serif" font-size="10" fill="#5a4b66" text-anchor="middle">/scripts & /refs</text>
+                        
+                        <path d="M 160 110 L 200 110" stroke="#993300" stroke-width="2" marker-end="url(#arrow)"/>
+                        
+                        <rect x="210" y="60" width="120" height="100" rx="6" fill="#7b52ab"/>
+                        <text x="270" y="105" font-family="sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">Agent Runtime</text>
+                        <text x="270" y="125" font-family="sans-serif" font-size="10" fill="#f0ebf8" text-anchor="middle">LLM Engine</text>
+
+                        <path d="M 340 110 L 380 110" stroke="#993300" stroke-width="2"/>
+
+                        <rect x="390" y="40" width="90" height="140" rx="6" fill="#ffffff" stroke="#993300" stroke-width="2"/>
+                        <text x="435" y="70" font-family="sans-serif" font-size="11" font-weight="bold" fill="#993300" text-anchor="middle">Output</text>
+                        <rect x="400" y="85" width="70" height="20" rx="3" fill="#f0ebf8"/>
+                        <rect x="400" y="115" width="70" height="20" rx="3" fill="#f0ebf8"/>
+                        <rect x="400" y="145" width="70" height="20" rx="3" fill="#f0ebf8"/>
+
+                        <defs>
+                            <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#993300"/>
+                            </marker>
+                        </defs>
+                    </svg>
                 </div>
                 <div class="figure-caption">
                     <strong>Figure 1: Agent Skills Open Standard Architecture</strong>
-                    Illustrates the open SKILL.md specification and directory hierarchy published at agentskills.io.
+                    Illustrates the open SKILL.md specification and progressive disclosure directory hierarchy.
                     <br>
                     <a href="https://agentskills.io" target="_blank" rel="noopener" class="figure-link">Visit Source Specification (agentskills.io) ↗</a>
                 </div>
@@ -600,7 +617,36 @@
 
             <div class="figure-card">
                 <div class="figure-img-wrapper">
-                    <img src="https://modelcontextprotocol.io/assets/mcp-topology.png" alt="Model Context Protocol Topology" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x300/f0ebf8/7b52ab?text=MCP+Connector+Topology+Diagram';">
+                    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="#f8f6fc" rx="6"/>
+                        
+                        <rect x="30" y="50" width="110" height="120" rx="6" fill="#ffffff" stroke="#7b52ab" stroke-width="2"/>
+                        <text x="85" y="80" font-family="sans-serif" font-size="12" font-weight="bold" fill="#7b52ab" text-anchor="middle">MCP Host</text>
+                        <text x="85" y="100" font-family="sans-serif" font-size="10" fill="#5a4b66" text-anchor="middle">(Claude / App)</text>
+                        <rect x="45" y="120" width="80" height="30" rx="4" fill="#f0ebf8"/>
+                        <text x="85" y="139" font-family="sans-serif" font-size="10" fill="#221828" text-anchor="middle">MCP Client</text>
+
+                        <line x1="150" y1="100" x2="210" y2="100" stroke="#993300" stroke-width="2" stroke-dasharray="4"/>
+                        <line x1="150" y1="120" x2="210" y2="120" stroke="#7b52ab" stroke-width="2"/>
+                        <text x="180" y="90" font-family="sans-serif" font-size="9" fill="#993300" text-anchor="middle">Protocol</text>
+
+                        <rect x="220" y="50" width="110" height="120" rx="6" fill="#ffffff" stroke="#993300" stroke-width="2"/>
+                        <text x="275" y="80" font-family="sans-serif" font-size="12" font-weight="bold" fill="#993300" text-anchor="middle">MCP Server</text>
+                        <text x="275" y="100" font-family="sans-serif" font-size="10" fill="#5a4b66" text-anchor="middle">(Connector)</text>
+                        <rect x="235" y="120" width="80" height="30" rx="4" fill="#f0ebf8"/>
+                        <text x="275" y="139" font-family="sans-serif" font-size="10" fill="#221828" text-anchor="middle">Tools & Prompts</text>
+
+                        <path d="M 340 110 L 370 110" stroke="#7b52ab" stroke-width="2"/>
+
+                        <rect x="380" y="30" width="90" height="45" rx="4" fill="#ffffff" stroke="#dcd0ee" stroke-width="1"/>
+                        <text x="425" y="57" font-family="sans-serif" font-size="10" fill="#221828" text-anchor="middle">Google Drive</text>
+
+                        <rect x="380" y="87" width="90" height="45" rx="4" fill="#ffffff" stroke="#dcd0ee" stroke-width="1"/>
+                        <text x="425" y="114" font-family="sans-serif" font-size="10" fill="#221828" text-anchor="middle">PostgreSQL</text>
+
+                        <rect x="380" y="145" width="90" height="45" rx="4" fill="#ffffff" stroke="#dcd0ee" stroke-width="1"/>
+                        <text x="425" y="172" font-family="sans-serif" font-size="10" fill="#221828" text-anchor="middle">GitHub API</text>
+                    </svg>
                 </div>
                 <div class="figure-caption">
                     <strong>Figure 2: Model Context Protocol (MCP) Topology</strong>
@@ -611,7 +657,6 @@
             </div>
         </div>
 
-        <!-- COMPREHENSIVE QUIZ SECTION -->
         <h2 class="section-title">📝 Advanced Technical Assessment</h2>
         <p style="margin-bottom: 1rem;">Complete all 30 advanced multiple-choice questions to test your architectural knowledge of Skills, Connectors, and MCP execution layers. Scoring 24/30 or above unlocks the Shining Glitching Star badge.</p>
 
@@ -640,9 +685,7 @@
 
     </div>
 
-    <!-- MODALS / POPUPS -->
-
-    <!-- Modal 1: Core -->
+    <!-- Modals -->
     <div id="m-core" class="modal-overlay" onclick="closeModalOnOuter(event, 'm-core')">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('m-core')">&times;</span>
@@ -670,18 +713,17 @@
         </div>
     </div>
 
-    <!-- Modal 2: Skill Blueprint -->
     <div id="m-skill" class="modal-overlay" onclick="closeModalOnOuter(event, 'm-skill')">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('m-skill')">&times;</span>
             <h2>Anatomical Blueprint of SKILL.md</h2>
             <p>A Skill is fundamentally a directory containing a mandatory root file named exactly <code>SKILL.md</code>.</p>
             
-            <pre><code>my-skill-folder/          <-- Folder MUST be kebab-case
-├── SKILL.md              <-- MUST be capitalized exactly
-├── references/           <-- Optional: Deep technical docs (Level 3)
-├── assets/               <-- Optional: Static templates & visual guides
-└── scripts/              <-- Optional: Deterministic code executed by engine</code></pre>
+            <pre><code>my-skill-folder/          &lt;-- Folder MUST be kebab-case
+├── SKILL.md              &lt;-- MUST be capitalized exactly
+├── references/           &lt;-- Optional: Deep technical docs (Level 3)
+├── assets/               &lt;-- Optional: Static templates &amp; visual guides
+└── scripts/              &lt;-- Optional: Deterministic code executed by engine</code></pre>
 
             <div class="diagram-container">
                 <div class="diagram-title">Progressive Disclosure Mechanics</div>
@@ -690,7 +732,7 @@
                     <div class="diagram-arrow">➔</div>
                     <div class="diagram-box">Level 2: SKILL.md Body<br><small>(Loaded on Match / Instructions)</small></div>
                     <div class="diagram-arrow">➔</div>
-                    <div class="diagram-box">Level 3: Subfolders<br><small>(Loaded on Demand / Scripts & Refs)</small></div>
+                    <div class="diagram-box">Level 3: Subfolders<br><small>(Loaded on Demand / Scripts &amp; Refs)</small></div>
                 </div>
             </div>
 
@@ -706,13 +748,12 @@ description: Prepares a monthly client financial summary for an accounting firm.
 
             <ul>
                 <li><strong>Kebab-Case Rule:</strong> Folder names must use lowercase letters separated by hyphens (e.g., <code>client-monthly-summary</code>).</li>
-                <li><strong>Tag Restrictions:</strong> Frontmatter description must NOT contain HTML/XML tags (e.g., <code>&lt;script&gt;</code>).</li>
+                <li><strong>Tag Restrictions:</strong> Frontmatter description must NOT contain HTML/XML tags.</li>
                 <li><strong>Reserved Key Terms:</strong> Skill names cannot include reserved vendor brand strings like <code>claude</code> or <code>anthropic</code>.</li>
             </ul>
         </div>
     </div>
 
-    <!-- Modal 3: Connector Governance -->
     <div id="m-conn" class="modal-overlay" onclick="closeModalOnOuter(event, 'm-conn')">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('m-conn')">&times;</span>
@@ -747,7 +788,7 @@ description: Prepares a monthly client financial summary for an accounting firm.
                     <tr>
                         <td><strong>Safety Level</strong></td>
                         <td>High (Recommended initial state).</td>
-                        <td>Requires established operational trust & recovery checks.</td>
+                        <td>Requires established operational trust &amp; recovery checks.</td>
                     </tr>
                     <tr>
                         <td><strong>Scope Controls</strong></td>
@@ -761,7 +802,6 @@ description: Prepares a monthly client financial summary for an accounting firm.
         </div>
     </div>
 
-    <!-- Modal 4: Feature Matrix -->
     <div id="m-matrix" class="modal-overlay" onclick="closeModalOnOuter(event, 'm-matrix')">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('m-matrix')">&times;</span>
@@ -807,7 +847,6 @@ description: Prepares a monthly client financial summary for an accounting firm.
         </div>
     </div>
 
-    <!-- Modal 5: Firing Engine -->
     <div id="m-execution" class="modal-overlay" onclick="closeModalOnOuter(event, 'm-execution')">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('m-execution')">&times;</span>
@@ -827,19 +866,18 @@ description: Prepares a monthly client financial summary for an accounting firm.
 
             <ul>
                 <li><strong>Firing Trigger:</strong> Occurs automatically when user phrasing matches a skill's frontmatter <code>description</code> field.</li>
-                <li><strong>Manual Overrides:</strong> Force execution by naming the skill explicitly ("Use my brand-voice skill") or typing <code>/</code> in supported UI surfaces (e.g., Cowork).</li>
-                <li><strong>Negative Triggers:</strong> Instructions in descriptions explicitly prohibiting activation for edge cases (e.g., "Do NOT use for one-off math").</li>
-                <li><strong>Built-in Capabilities:</strong> Document skills (Word, Excel, PowerPoint, PDF) rely on the engine toggle <em>"Code execution and file creation"</em> under Settings -> Capabilities. They do not appear as editable files in the personal skills directory.</li>
+                <li><strong>Manual Overrides:</strong> Force execution by naming the skill explicitly ("Use my brand-voice skill") or typing <code>/</code> in supported UI surfaces.</li>
+                <li><strong>Negative Triggers:</strong> Instructions in descriptions explicitly prohibiting activation for edge cases.</li>
+                <li><strong>Built-in Capabilities:</strong> Document skills rely on the engine toggle <em>"Code execution and file creation"</em> under Settings -&gt; Capabilities.</li>
             </ul>
         </div>
     </div>
 
-    <!-- Modal 6: Portability Engine -->
     <div id="m-portability" class="modal-overlay" onclick="closeModalOnOuter(event, 'm-portability')">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('m-portability')">&times;</span>
             <h2>Cross-Platform Open Standard Architecture</h2>
-            <p>Published in late 2025 at <strong>agentskills.io</strong> and governed under the Linux Foundation's Agentic AI Foundation, the Agent Skills open standard separates skill definitions from proprietary runtime lock-in.</p>
+            <p>Published at <strong>agentskills.io</strong> and governed under the Linux Foundation's Agentic AI Foundation, the Agent Skills open standard separates skill definitions from proprietary runtime lock-in.</p>
 
             <table>
                 <thead>
@@ -858,14 +896,13 @@ description: Prepares a monthly client financial summary for an accounting firm.
                     <tr>
                         <td><strong>File Format</strong></td>
                         <td>Standardized <code>SKILL.md</code> plain text directory structure.</td>
-                        <td>Proprietary platform configuration portals & database entries.</td>
+                        <td>Proprietary platform configuration portals &amp; database entries.</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- Modal 7: Security Matrix -->
     <div id="m-security" class="modal-overlay" onclick="closeModalOnOuter(event, 'm-security')">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('m-security')">&times;</span>
@@ -901,7 +938,6 @@ description: Prepares a monthly client financial summary for an accounting firm.
         </div>
     </div>
 
-    <!-- Modal 8: Practical Implementations -->
     <div id="m-projects" class="modal-overlay" onclick="closeModalOnOuter(event, 'm-projects')">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('m-projects')">&times;</span>
@@ -912,14 +948,13 @@ description: Prepares a monthly client financial summary for an accounting firm.
                 <li><strong>Project 1: Private Skill Creation:</strong> Utilize <code>skill-creator</code> to generate, test frontmatter triggers, and iteratively refine custom instruction formats.</li>
                 <li><strong>Project 2: Read-Only Connector Integration:</strong> Establish zero-copy-paste context pulling from cloud storage or email threads.</li>
                 <li><strong>Project 3: Skill + Connector Pipeline:</strong> Combine automated data fetching with customized procedural output formatting.</li>
-                <li><strong>Project 4: Standardized Handoff & Portability Test:</strong> Distribute <code>SKILL.md</code> across team directories or execute in terminal environments (e.g., Codex CLI / OpenCode).</li>
+                <li><strong>Project 4: Standardized Handoff &amp; Portability Test:</strong> Distribute <code>SKILL.md</code> across team directories or execute in terminal environments.</li>
                 <li><strong>Project 5: Third-Party Security Audit:</strong> Perform programmatic dry-runs and line-by-line intent checks before deploying third-party community skills.</li>
             </ol>
         </div>
     </div>
 
     <script>
-        // Modal Control Functions
         function openModal(id) {
             document.getElementById(id).style.display = 'flex';
         }
@@ -934,7 +969,6 @@ description: Prepares a monthly client financial summary for an accounting firm.
             }
         }
 
-        // Quiz Questions Data (30 Advanced Items)
         const quizData = [
             {
                 q: "1. What fundamental architectural shift occurs when transitioning from standard AI chat prompts to utilizing Skills and Connectors?",
@@ -1268,7 +1302,6 @@ description: Prepares a monthly client financial summary for an accounting firm.
             }
         ];
 
-        // Render Quiz Questions
         function renderQuiz() {
             const container = document.getElementById('quizQuestions');
             container.innerHTML = '';
@@ -1297,7 +1330,6 @@ description: Prepares a monthly client financial summary for an accounting firm.
             });
         }
 
-        // Submit and Calculate Score
         function submitQuiz() {
             let score = 0;
             const keyContent = document.getElementById('keyContent');
@@ -1312,7 +1344,6 @@ description: Prepares a monthly client financial summary for an accounting firm.
                     score++;
                 }
 
-                // Build Answer Key Item
                 const keyDiv = document.createElement('div');
                 keyDiv.className = `key-item ${isCorrect ? 'user-correct' : 'user-incorrect'}`;
                 
@@ -1329,7 +1360,6 @@ description: Prepares a monthly client financial summary for an accounting firm.
                 keyContent.appendChild(keyDiv);
             });
 
-            // Display Results
             const resultBox = document.getElementById('resultBox');
             const scoreText = document.getElementById('scoreText');
             const feedbackText = document.getElementById('feedbackText');
@@ -1348,11 +1378,9 @@ description: Prepares a monthly client financial summary for an accounting firm.
                 feedbackText.textContent = "Assessment Complete. Review the detailed answer key and technical elaborations below to reinforce key architectural concepts.";
             }
 
-            // Smooth scroll to results
             resultBox.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Initialize quiz on load
         window.onload = function() {
             renderQuiz();
         };
