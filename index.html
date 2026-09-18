@@ -211,6 +211,68 @@
             white-space: pre-wrap;
         }
 
+        /* Visual Reference / Figures Section */
+        .figures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .figure-card {
+            background: var(--white);
+            border: 1px solid var(--lilac-border);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .figure-img-wrapper {
+            background-color: var(--lilac-card);
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--lilac-border);
+            overflow: hidden;
+        }
+
+        .figure-img-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .figure-caption {
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .figure-caption strong {
+            color: var(--cockleshell);
+            display: block;
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+        }
+
+        .figure-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: var(--lilac-accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .figure-link:hover {
+            text-decoration: underline;
+        }
+
         /* Diagram / Image Frame Component */
         .diagram-container {
             background-color: var(--lilac-card);
@@ -519,6 +581,36 @@
 
         </div>
 
+        <!-- FIGURES & VISUAL ARCHITECTURE REFERENCE SECTION -->
+        <h2 class="section-title">🖼️ System Figures & Visual Diagrams</h2>
+        <p style="margin-bottom: 1.5rem;">Visual architecture diagrams, standard schemas, and operational flowcharts illustrating Skills and Connectors mechanics.</p>
+
+        <div class="figures-grid">
+            <div class="figure-card">
+                <div class="figure-img-wrapper">
+                    <img src="https://agentskills.io/assets/agent-skills-architecture.png" alt="Agent Skills Standard Architecture" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x300/f0ebf8/993300?text=Agent+Skills+Architecture+Diagram';">
+                </div>
+                <div class="figure-caption">
+                    <strong>Figure 1: Agent Skills Open Standard Architecture</strong>
+                    Illustrates the open SKILL.md specification and directory hierarchy published at agentskills.io.
+                    <br>
+                    <a href="https://agentskills.io" target="_blank" rel="noopener" class="figure-link">Visit Source Specification (agentskills.io) ↗</a>
+                </div>
+            </div>
+
+            <div class="figure-card">
+                <div class="figure-img-wrapper">
+                    <img src="https://modelcontextprotocol.io/assets/mcp-topology.png" alt="Model Context Protocol Topology" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x300/f0ebf8/7b52ab?text=MCP+Connector+Topology+Diagram';">
+                </div>
+                <div class="figure-caption">
+                    <strong>Figure 2: Model Context Protocol (MCP) Topology</strong>
+                    Diagram showing client-host-server interactions bridging LLM applications with external data sources.
+                    <br>
+                    <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener" class="figure-link">Visit Source Standard (modelcontextprotocol.io) ↗</a>
+                </div>
+            </div>
+        </div>
+
         <!-- COMPREHENSIVE QUIZ SECTION -->
         <h2 class="section-title">📝 Advanced Technical Assessment</h2>
         <p style="margin-bottom: 1rem;">Complete all 30 advanced multiple-choice questions to test your architectural knowledge of Skills, Connectors, and MCP execution layers. Scoring 24/30 or above unlocks the Shining Glitching Star badge.</p>
@@ -555,7 +647,7 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('m-core')">&times;</span>
             <h2>Core Taxonomy & Paradigm Shift</h2>
-            <p>Moving from a plain conversation interface to an <strong>Operating Layer</strong> transitions AI from an isolated text generator into an active workplace participant capable of contextual reasoning and app-level actions[cite: 6].</p>
+            <p>Moving from a plain conversation interface to an <strong>Operating Layer</strong> transitions AI from an isolated text generator into an active workplace participant capable of contextual reasoning and app-level actions.</p>
             
             <div class="diagram-container">
                 <div class="diagram-title">System Functional Metaphor</div>
@@ -571,9 +663,9 @@
             </div>
 
             <ul>
-                <li><strong>One-time Prompt:</strong> Shouted order across a counter; executed once and immediately forgotten[cite: 6].</li>
-                <li><strong>Skill:</strong> Standardized, persistent instruction set pinned to the system, executed identically every time[cite: 6].</li>
-                <li><strong>Connector:</strong> The live interface providing safe, authenticated access to external data repositories (e.g., Google Drive, Gmail, Linear, Notion)[cite: 6].</li>
+                <li><strong>One-time Prompt:</strong> Shouted order across a counter; executed once and immediately forgotten.</li>
+                <li><strong>Skill:</strong> Standardized, persistent instruction set pinned to the system, executed identically every time.</li>
+                <li><strong>Connector:</strong> The live interface providing safe, authenticated access to external data repositories (e.g., Google Drive, Gmail, Linear, Notion).</li>
             </ul>
         </div>
     </div>
@@ -583,7 +675,7 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('m-skill')">&times;</span>
             <h2>Anatomical Blueprint of SKILL.md</h2>
-            <p>A Skill is fundamentally a directory containing a mandatory root file named exactly <code>SKILL.md</code>[cite: 6].</p>
+            <p>A Skill is fundamentally a directory containing a mandatory root file named exactly <code>SKILL.md</code>.</p>
             
             <pre><code>my-skill-folder/          <-- Folder MUST be kebab-case
 ├── SKILL.md              <-- MUST be capitalized exactly
@@ -613,9 +705,9 @@ description: Prepares a monthly client financial summary for an accounting firm.
 2. Flag items exceeding tax-withholding threshold.</code></pre>
 
             <ul>
-                <li><strong>Kebab-Case Rule:</strong> Folder names must use lowercase letters separated by hyphens (e.g., <code>client-monthly-summary</code>)[cite: 6].</li>
-                <li><strong>Tag Restrictions:</strong> Frontmatter description must NOT contain HTML/XML tags (e.g., <code>&lt;script&gt;</code>)[cite: 6].</li>
-                <li><strong>Reserved Key Terms:</strong> Skill names cannot include reserved vendor brand strings like <code>claude</code> or <code>anthropic</code>[cite: 6].</li>
+                <li><strong>Kebab-Case Rule:</strong> Folder names must use lowercase letters separated by hyphens (e.g., <code>client-monthly-summary</code>).</li>
+                <li><strong>Tag Restrictions:</strong> Frontmatter description must NOT contain HTML/XML tags (e.g., <code>&lt;script&gt;</code>).</li>
+                <li><strong>Reserved Key Terms:</strong> Skill names cannot include reserved vendor brand strings like <code>claude</code> or <code>anthropic</code>.</li>
             </ul>
         </div>
     </div>
@@ -625,7 +717,7 @@ description: Prepares a monthly client financial summary for an accounting firm.
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('m-conn')">&times;</span>
             <h2>Connector Protocol & Governance (MCP)</h2>
-            <p>Connectors run on the open <strong>Model Context Protocol (MCP)</strong> standard[cite: 6]. They bridge AI models to third-party APIs while enforcing organizational identity and privilege boundaries[cite: 6].</p>
+            <p>Connectors run on the open <strong>Model Context Protocol (MCP)</strong> standard. They bridge AI models to third-party APIs while enforcing organizational identity and privilege boundaries.</p>
             
             <div class="diagram-container">
                 <div class="diagram-title">Connector Security Architecture</div>
@@ -649,23 +741,23 @@ description: Prepares a monthly client financial summary for an accounting firm.
                 <tbody>
                     <tr>
                         <td><strong>Capabilities</strong></td>
-                        <td>Search, read, summarize, extract data[cite: 6].</td>
-                        <td>Edit documents, send emails, delete records, post tickets[cite: 6].</td>
+                        <td>Search, read, summarize, extract data.</td>
+                        <td>Edit documents, send emails, delete records, post tickets.</td>
                     </tr>
                     <tr>
                         <td><strong>Safety Level</strong></td>
-                        <td>High (Recommended initial state)[cite: 6].</td>
-                        <td>Requires established operational trust & recovery checks[cite: 6].</td>
+                        <td>High (Recommended initial state).</td>
+                        <td>Requires established operational trust & recovery checks.</td>
                     </tr>
                     <tr>
                         <td><strong>Scope Controls</strong></td>
-                        <td>Restricted to explicit folders/channels[cite: 6].</td>
-                        <td>Per-action execution confirmation flags[cite: 6].</td>
+                        <td>Restricted to explicit folders/channels.</td>
+                        <td>Per-action execution confirmation flags.</td>
                     </tr>
                 </tbody>
             </table>
 
-            <p><strong>Tool Access Settings:</strong> When managing 10+ active connectors, switch tool loading to <em>load-on-demand</em> to prevent prompt context bloat[cite: 6].</p>
+            <p><strong>Tool Access Settings:</strong> When managing 10+ active connectors, switch tool loading to <em>load-on-demand</em> to prevent prompt context bloat.</p>
         </div>
     </div>
 
@@ -674,7 +766,7 @@ description: Prepares a monthly client financial summary for an accounting firm.
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('m-matrix')">&times;</span>
             <h2>System Feature Comparison Matrix</h2>
-            <p>Understanding the exact functional isolation between all four core system features prevents configuration overlap and unexpected model behavior[cite: 6].</p>
+            <p>Understanding the exact functional isolation between all four core system features prevents configuration overlap and unexpected model behavior.</p>
 
             <table>
                 <thead>
@@ -687,28 +779,28 @@ description: Prepares a monthly client financial summary for an accounting firm.
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Skill</strong>[cite: 6]</td>
-                        <td>Reusable, domain-specific procedural instructions[cite: 6].</td>
-                        <td>Dynamic (Sleeps until prompt matches description)[cite: 6].</td>
-                        <td><em>"I keep re-explaining HOW to do this."</em>[cite: 6]</td>
+                        <td><strong>Skill</strong></td>
+                        <td>Reusable, domain-specific procedural instructions.</td>
+                        <td>Dynamic (Sleeps until prompt matches description).</td>
+                        <td><em>"I keep re-explaining HOW to do this."</em></td>
                     </tr>
                     <tr>
-                        <td><strong>Connector</strong>[cite: 6]</td>
-                        <td>Secure read/write integration with external systems[cite: 6].</td>
-                        <td>Session-enabled / Dynamic tool invocation[cite: 6].</td>
-                        <td><em>"I keep copy-pasting from another app."</em>[cite: 6]</td>
+                        <td><strong>Connector</strong></td>
+                        <td>Secure read/write integration with external systems.</td>
+                        <td>Session-enabled / Dynamic tool invocation.</td>
+                        <td><em>"I keep copy-pasting from another app."</em></td>
                     </tr>
                     <tr>
-                        <td><strong>Project</strong>[cite: 6]</td>
-                        <td>Isolated workspace for specific continuous bodies of work[cite: 6].</td>
-                        <td>Static (Always loaded inside project chats)[cite: 6].</td>
-                        <td><em>"These files/rules apply to EVERYTHING here."</em>[cite: 6]</td>
+                        <td><strong>Project</strong></td>
+                        <td>Isolated workspace for specific continuous bodies of work.</td>
+                        <td>Static (Always loaded inside project chats).</td>
+                        <td><em>"These files/rules apply to EVERYTHING here."</em></td>
                     </tr>
                     <tr>
-                        <td><strong>Custom Instructions</strong>[cite: 6]</td>
-                        <td>Global persona and output formatting preferences[cite: 6].</td>
-                        <td>Global (Always loaded across ALL chats)[cite: 6].</td>
-                        <td><em>"I want this rule to be true everywhere."</em>[cite: 6]</td>
+                        <td><strong>Custom Instructions</strong></td>
+                        <td>Global persona and output formatting preferences.</td>
+                        <td>Global (Always loaded across ALL chats).</td>
+                        <td><em>"I want this rule to be true everywhere."</em></td>
                     </tr>
                 </tbody>
             </table>
@@ -720,7 +812,7 @@ description: Prepares a monthly client financial summary for an accounting firm.
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('m-execution')">&times;</span>
             <h2>Dynamic Firing & Built-In Engine</h2>
-            <p>The system evaluates prompt intent against frontmatter descriptions to trigger skills dynamically without mandatory manual invocation[cite: 6].</p>
+            <p>The system evaluates prompt intent against frontmatter descriptions to trigger skills dynamically without mandatory manual invocation.</p>
 
             <div class="diagram-container">
                 <div class="diagram-title">Automatic Firing Flowchart</div>
@@ -734,10 +826,10 @@ description: Prepares a monthly client financial summary for an accounting firm.
             </div>
 
             <ul>
-                <li><strong>Firing Trigger:</strong> Occurs automatically when user phrasing matches a skill's frontmatter <code>description</code> field[cite: 6].</li>
-                <li><strong>Manual Overrides:</strong> Force execution by naming the skill explicitly ("Use my brand-voice skill") or typing <code>/</code> in supported UI surfaces (e.g., Cowork)[cite: 6].</li>
-                <li><strong>Negative Triggers:</strong> Instructions in descriptions explicitly prohibiting activation for edge cases (e.g., "Do NOT use for one-off math")[cite: 6].</li>
-                <li><strong>Built-in Capabilities:</strong> Document skills (Word, Excel, PowerPoint, PDF) rely on the engine toggle <em>"Code execution and file creation"</em> under Settings -> Capabilities[cite: 6]. They do not appear as editable files in the personal skills directory[cite: 6].</li>
+                <li><strong>Firing Trigger:</strong> Occurs automatically when user phrasing matches a skill's frontmatter <code>description</code> field.</li>
+                <li><strong>Manual Overrides:</strong> Force execution by naming the skill explicitly ("Use my brand-voice skill") or typing <code>/</code> in supported UI surfaces (e.g., Cowork).</li>
+                <li><strong>Negative Triggers:</strong> Instructions in descriptions explicitly prohibiting activation for edge cases (e.g., "Do NOT use for one-off math").</li>
+                <li><strong>Built-in Capabilities:</strong> Document skills (Word, Excel, PowerPoint, PDF) rely on the engine toggle <em>"Code execution and file creation"</em> under Settings -> Capabilities. They do not appear as editable files in the personal skills directory.</li>
             </ul>
         </div>
     </div>
@@ -747,7 +839,7 @@ description: Prepares a monthly client financial summary for an accounting firm.
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('m-portability')">&times;</span>
             <h2>Cross-Platform Open Standard Architecture</h2>
-            <p>Published in late 2025 at <strong>agentskills.io</strong> and governed under the Linux Foundation's Agentic AI Foundation, the Agent Skills open standard separates skill definitions from proprietary runtime lock-in[cite: 6].</p>
+            <p>Published in late 2025 at <strong>agentskills.io</strong> and governed under the Linux Foundation's Agentic AI Foundation, the Agent Skills open standard separates skill definitions from proprietary runtime lock-in.</p>
 
             <table>
                 <thead>
@@ -760,13 +852,13 @@ description: Prepares a monthly client financial summary for an accounting firm.
                 <tbody>
                     <tr>
                         <td><strong>Platforms</strong></td>
-                        <td>Claude.ai, Cowork, Claude Code, OpenCode, OpenAI Codex CLI, Google Gemini CLI, Cursor, VS Code[cite: 6].</td>
-                        <td>ChatGPT Custom GPTs, Google Gemini Gems[cite: 6].</td>
+                        <td>Claude.ai, Cowork, Claude Code, OpenCode, OpenAI Codex CLI, Google Gemini CLI, Cursor, VS Code.</td>
+                        <td>ChatGPT Custom GPTs, Google Gemini Gems.</td>
                     </tr>
                     <tr>
                         <td><strong>File Format</strong></td>
-                        <td>Standardized <code>SKILL.md</code> plain text directory structure[cite: 6].</td>
-                        <td>Proprietary platform configuration portals & database entries[cite: 6].</td>
+                        <td>Standardized <code>SKILL.md</code> plain text directory structure.</td>
+                        <td>Proprietary platform configuration portals & database entries.</td>
                     </tr>
                 </tbody>
             </table>
@@ -778,7 +870,7 @@ description: Prepares a monthly client financial summary for an accounting firm.
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('m-security')">&times;</span>
             <h2>Security Threat Matrix & Safety Audit</h2>
-            <p>Granting tools access to active computational layers and data channels creates explicit attack vectors that require rigorous verification[cite: 6].</p>
+            <p>Granting tools access to active computational layers and data channels creates explicit attack vectors that require rigorous verification.</p>
 
             <table>
                 <thead>
@@ -790,19 +882,19 @@ description: Prepares a monthly client financial summary for an accounting firm.
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Prompt Injection</strong>[cite: 6]</td>
-                        <td>Hidden text inside untrusted skill files overriding system instructions[cite: 6].</td>
-                        <td>Audit full text before installing: <em>"Read this skill and flag anything that contacts external servers."</em>[cite: 6]</td>
+                        <td><strong>Prompt Injection</strong></td>
+                        <td>Hidden text inside untrusted skill files overriding system instructions.</td>
+                        <td>Audit full text before installing: <em>"Read this skill and flag anything that contacts external servers."</em></td>
                     </tr>
                     <tr>
-                        <td><strong>Data Exfiltration</strong>[cite: 6]</td>
-                        <td>Skill silently transferring private context out to third-party endpoints[cite: 6].</td>
-                        <td>Disable network egress on execution toggles; limit skill origin to verified directories[cite: 6].</td>
+                        <td><strong>Data Exfiltration</strong></td>
+                        <td>Skill silently transferring private context out to third-party endpoints.</td>
+                        <td>Disable network egress on execution toggles; limit skill origin to verified directories.</td>
                     </tr>
                     <tr>
-                        <td><strong>Unscoped Connector Access</strong>[cite: 6]</td>
-                        <td>Granting whole-drive or broad admin privileges to a single connector[cite: 6].</td>
-                        <td>Scope connectors strictly to required subfolders; enforce read-only status initially[cite: 6].</td>
+                        <td><strong>Unscoped Connector Access</strong></td>
+                        <td>Granting whole-drive or broad admin privileges to a single connector.</td>
+                        <td>Scope connectors strictly to required subfolders; enforce read-only status initially.</td>
                     </tr>
                 </tbody>
             </table>
@@ -814,14 +906,14 @@ description: Prepares a monthly client financial summary for an accounting firm.
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('m-projects')">&times;</span>
             <h2>Practical Implementation Workflows</h2>
-            <p>Deployment of Skills and Connectors follows a structured methodology centered around the <strong>Market-of-One Test</strong>: A skill is worth creating only when it captures your own repeated personal or firm-specific procedural workflow[cite: 6].</p>
+            <p>Deployment of Skills and Connectors follows a structured methodology centered around the <strong>Market-of-One Test</strong>: A skill is worth creating only when it captures your own repeated personal or firm-specific procedural workflow.</p>
 
             <ol>
-                <li><strong>Project 1: Private Skill Creation:</strong> Utilize <code>skill-creator</code> to generate, test frontmatter triggers, and iteratively refine custom instruction formats[cite: 6].</li>
-                <li><strong>Project 2: Read-Only Connector Integration:</strong> Establish zero-copy-paste context pulling from cloud storage or email threads[cite: 6].</li>
-                <li><strong>Project 3: Skill + Connector Pipeline:</strong> Combine automated data fetching with customized procedural output formatting[cite: 6].</li>
-                <li><strong>Project 4: Standardized Handoff & Portability Test:</strong> Distribute <code>SKILL.md</code> across team directories or execute in terminal environments (e.g., Codex CLI / OpenCode)[cite: 6].</li>
-                <li><strong>Project 5: Third-Party Security Audit:</strong> Perform programmatic dry-runs and line-by-line intent checks before deploying third-party community skills[cite: 6].</li>
+                <li><strong>Project 1: Private Skill Creation:</strong> Utilize <code>skill-creator</code> to generate, test frontmatter triggers, and iteratively refine custom instruction formats.</li>
+                <li><strong>Project 2: Read-Only Connector Integration:</strong> Establish zero-copy-paste context pulling from cloud storage or email threads.</li>
+                <li><strong>Project 3: Skill + Connector Pipeline:</strong> Combine automated data fetching with customized procedural output formatting.</li>
+                <li><strong>Project 4: Standardized Handoff & Portability Test:</strong> Distribute <code>SKILL.md</code> across team directories or execute in terminal environments (e.g., Codex CLI / OpenCode).</li>
+                <li><strong>Project 5: Third-Party Security Audit:</strong> Perform programmatic dry-runs and line-by-line intent checks before deploying third-party community skills.</li>
             </ol>
         </div>
     </div>
