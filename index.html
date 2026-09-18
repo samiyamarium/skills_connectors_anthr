@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills & Connectors - AI Mastery & Technical Study Guide</title>
+    <style>
+        :root {
+            --cockleshell: #993300;
+            --cockleshell-light: #bc4710;
+            --cockleshell-dark: #662200;
+            --lilac-bg: #f8f6fc;
+            --lilac-card: #f0ebf8;
+            --lilac-border: #dcd0ee;
+            --lilac-accent: #7b52ab;
+            --text-dark: #221828;
+            --text-muted: #5a4b66;
+            --white: #ffffff;
+            --success: #2e7d32;
+            --danger: #c62828;
+            --gold: #ffd700;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--lilac-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cockleshell-dark), var(--cockleshell));
+            color: var(--white);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            border-bottom: 5px solid var(--lilac-accent);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #f3e8f8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Section Styling */
+        .section-title {
+            color: var(--cockleshell);
+            border-bottom: 2px solid var(--cockleshell-light);
+            padding-bottom: 0.5rem;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Grid and Popup Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--lilac-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(123, 82, 171, 0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(153, 51, 0, 0.15);
+            border-color: var(--cockleshell-light);
+        }
+
+        .card h3 {
+            color: var(--cockleshell);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .card .click-hint {
+            color: var(--lilac-accent);
+            font-weight: 600;
+            font-size: 0.85rem;
+            align-self: flex-end;
+        }
+
+        /* Modal / Popup Styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(34, 24, 40, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 1rem;
+            backdrop-filter: blur(3px);
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-top: 6px solid var(--cockleshell);
+            border-radius: 8px;
+            max-width: 750px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1.2rem;
+            font-size: 1.8rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            color: var(--cockleshell);
+        }
+
+        .modal-content h2 {
+            color: var(--cockleshell);
+            margin-bottom: 1rem;
+            padding-right: 2rem;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--white);
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid var(--lilac-border);
+        }
+
+        th {
+            background-color: var(--lilac-card);
+            color: var(--cockleshell-dark);
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fcfaff;
+        }
+
+        /* Code/Text block */
+        pre, code {
+            background-color: #281e2d;
+            color: #f0e6f5;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre-wrap;
+        }
+
+        /* Diagram / Image Frame Component */
+        .diagram-container {
+            background-color: var(--lilac-card);
+            border: 2px dashed var(--lilac-accent);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .diagram-title {
+            font-weight: bold;
+            color: var(--cockleshell);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .diagram-flow {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .diagram-box {
+            background: var(--white);
+            border: 1px solid var(--cockleshell);
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--text-dark);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .diagram-arrow {
+            color: var(--cockleshell);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Quiz Container */
+        .quiz-container {
+            background: var(--white);
+            border: 1px solid var(--lilac-border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .quiz-question {
+            margin-bottom: 1.8rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid var(--lilac-border);
+        }
+
+        .quiz-question p.q-text {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.15s;
+            font-size: 0.95rem;
+        }
+
+        .option-label:hover {
+            background-color: var(--lilac-card);
+        }
+
+        .option-label input[type="radio"] {
+            accent-color: var(--cockleshell);
+            width: 18px;
+            height: 18px;
+        }
+
+        .quiz-btn {
+            background: var(--cockleshell);
+            color: var(--white);
+            border: none;
+            padding: 0.9rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+            margin-top: 1rem;
+        }
+
+        .quiz-btn:hover {
+            background: var(--cockleshell-light);
+        }
+
+        /* Results & Answer Key */
+        .result-box {
+            display: none;
+            background: var(--lilac-card);
+            border: 2px solid var(--lilac-accent);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-score {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--cockleshell-dark);
+            margin: 1rem 0;
+        }
+
+        /* Glitching Shining Star Animation */
+        .star-container {
+            display: none;
+            margin: 1rem auto;
+            width: 80px;
+            height: 80px;
+            position: relative;
+        }
+
+        .glitch-star {
+            font-size: 70px;
+            color: var(--gold);
+            text-shadow: 0 0 10px #ffea00, 0 0 20px #ffaa00, 0 0 30px #ff6600;
+            animation: pulse-glow 1.5s infinite alternate, glitch 0.3s infinite continuous;
+            display: inline-block;
+        }
+
+        @keyframes pulse-glow {
+            0% { transform: scale(1); filter: drop-shadow(0 0 5px var(--gold)); }
+            100% { transform: scale(1.15); filter: drop-shadow(0 0 20px var(--gold)); }
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0, 0) skew(0deg); }
+            20% { transform: translate(-2px, 2px) skew(-3deg); }
+            40% { transform: translate(-1px, -2px) skew(3deg); }
+            60% { transform: translate(2px, 1px) skew(-1deg); }
+            80% { transform: translate(1px, -1px) skew(2deg); }
+            100% { transform: translate(0, 0) skew(0deg); }
+        }
+
+        .answer-key {
+            display: none;
+            margin-top: 2.5rem;
+            text-align: left;
+        }
+
+        .key-item {
+            background: var(--white);
+            border-left: 4px solid var(--cockleshell);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+            border-radius: 0 6px 6px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+
+        .key-item.user-correct {
+            border-left-color: var(--success);
+        }
+
+        .key-item.user-incorrect {
+            border-left-color: var(--danger);
+        }
+
+        .key-item .q-title {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .key-item .ans-status {
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .user-correct .ans-status { color: var(--success); }
+        .user-incorrect .ans-status { color: var(--danger); }
+
+        .key-item .elaboration {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            background: var(--lilac-bg);
+            padding: 0.6rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.6rem; }
+            .modal-content { padding: 1.2rem; }
+            .card-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Skills & Connectors Architecture Guide</h1>
+        <p>Teach AI Once, Connect It to Your Apps • Cockleshell & Light Lilac Technical Reference & Examination</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- CORE ARCHITECTURE MODULES -->
+        <h2 class="section-title">💡 Core Architecture & Technical Foundations</h2>
+        <p style="margin-bottom: 1.5rem;">Click on any module to open detailed technical specifications, architectural breakdowns, structural schemas, and operational boundaries.</p>
+
+        <div class="card-grid">
+            
+            <div class="card" onclick="openModal('m-core')">
+                <div>
+                    <h3>1. Core Taxonomy & Paradigm Shift</h3>
+                    <p>From chat box text loops to operating layer execution. The fundamental triad: Prompts, Skills, Connectors.</p>
+                </div>
+                <span class="click-hint">Inspect Core Paradigm →</span>
+            </div>
+
+            <div class="card" onclick="openModal('m-skill')">
+                <div>
+                    <h3>2. Anatomical Blueprint of SKILL.md</h3>
+                    <p>Directory structures, progressive disclosure mechanisms, frontmatter configuration, and kebab-case standards.</p>
+                </div>
+                <span class="click-hint">Inspect SKILL.md Blueprint →</span>
+            </div>
+
+            <div class="card" onclick="openModal('m-conn')">
+                <div>
+                    <h3>3. Connector Protocol & Governance</h3>
+                    <p>Model Context Protocol (MCP) architecture, tool access, read vs. write privileges, and boundary scopes.</p>
+                </div>
+                <span class="click-hint">Inspect MCP Governance →</span>
+            </div>
+
+            <div class="card" onclick="openModal('m-matrix')">
+                <div>
+                    <h3>4. System Feature Matrix</h3>
+                    <p>Comparative structural matrix across Skills, Connectors, Projects, and Global Custom Instructions.</p>
+                </div>
+                <span class="click-hint">View System Matrix →</span>
+            </div>
+
+            <div class="card" onclick="openModal('m-execution')">
+                <div>
+                    <h3>5. Dynamic Firing & Invocation Protocols</h3>
+                    <p>Automatic semantic matching, slash commands, progressive disclosure levels, and built-in capabilities.</p>
+                </div>
+                <span class="click-hint">View Firing Mechanics →</span>
+            </div>
+
+            <div class="card" onclick="openModal('m-portability')">
+                <div>
+                    <h3>6. Cross-Platform Open Standard</h3>
+                    <p>Agent Skills standard (agentskills.io) portability across Claude, Codex CLI, Gemini CLI, OpenCode, and Cowork.</p>
+                </div>
+                <span class="click-hint">View Portability Engine →</span>
+            </div>
+
+            <div class="card" onclick="openModal('m-security')">
+                <div>
+                    <h3>7. Security & Risk Mitigation Protocols</h3>
+                    <p>Defenses against prompt injection, data exfiltration attacks, un-scoped permissions, and malicious skill execution.</p>
+                </div>
+                <span class="click-hint">View Threat Matrix →</span>
+            </div>
+
+            <div class="card" onclick="openModal('m-projects')">
+                <div>
+                    <h3>8. Practical Implementation Workflows</h3>
+                    <p>Five end-to-end technical projects, including market-of-one evaluations, audit protocols, and fallback recovery.</p>
+                </div>
+                <span class="click-hint">View Implementations →</span>
+            </div>
+
+        </div>
+
+        <!-- COMPREHENSIVE QUIZ SECTION -->
+        <h2 class="section-title">📝 Advanced Technical Assessment</h2>
+        <p style="margin-bottom: 1rem;">Complete all 30 advanced multiple-choice questions to test your architectural knowledge of Skills, Connectors, and MCP execution layers. Scoring 24/30 or above unlocks the Shining Glitching Star badge.</p>
+
+        <div class="quiz-container">
+            <form id="quizForm">
+                <div id="quizQuestions"></div>
+                <button type="button" class="quiz-btn" onclick="submitQuiz()">Submit Technical Assessment</button>
+            </form>
+
+            <div id="resultBox" class="result-box">
+                <h2>Assessment Results</h2>
+                <div class="result-score" id="scoreText">0 / 30</div>
+                
+                <div id="starContainer" class="star-container">
+                    <div class="glitch-star">★</div>
+                </div>
+
+                <p id="feedbackText" style="font-size: 1.1rem; margin-top: 1rem; color: var(--text-dark);"></p>
+
+                <div id="answerKey" class="answer-key">
+                    <h3 style="color: var(--cockleshell); margin-bottom: 1rem;">Comprehensive Answer Key & Technical Elaborations</h3>
+                    <div id="keyContent"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MODALS / POPUPS -->
+
+    <!-- Modal 1: Core -->
+    <div id="m-core" class="modal-overlay" onclick="closeModalOnOuter(event, 'm-core')">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('m-core')">&times;</span>
+            <h2>Core Taxonomy & Paradigm Shift</h2>
+            <p>Moving from a plain conversation interface to an <strong>Operating Layer</strong> transitions AI from an isolated text generator into an active workplace participant capable of contextual reasoning and app-level actions[cite: 6].</p>
+            
+            <div class="diagram-container">
+                <div class="diagram-title">System Functional Metaphor</div>
+                <div class="diagram-flow">
+                    <div class="diagram-box">Chat Message<br><small>(One-time Request)</small></div>
+                    <div class="diagram-arrow">+</div>
+                    <div class="diagram-box">Skill<br><small>(Recipe / Procedural Expertise)</small></div>
+                    <div class="diagram-arrow">+</div>
+                    <div class="diagram-box">Connector<br><small>(Kitchen / App Access)</small></div>
+                    <div class="diagram-arrow">=</div>
+                    <div class="diagram-box" style="border-color:var(--cockleshell); background:var(--lilac-card);">Operating Layer Result</div>
+                </div>
+            </div>
+
+            <ul>
+                <li><strong>One-time Prompt:</strong> Shouted order across a counter; executed once and immediately forgotten[cite: 6].</li>
+                <li><strong>Skill:</strong> Standardized, persistent instruction set pinned to the system, executed identically every time[cite: 6].</li>
+                <li><strong>Connector:</strong> The live interface providing safe, authenticated access to external data repositories (e.g., Google Drive, Gmail, Linear, Notion)[cite: 6].</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 2: Skill Blueprint -->
+    <div id="m-skill" class="modal-overlay" onclick="closeModalOnOuter(event, 'm-skill')">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('m-skill')">&times;</span>
+            <h2>Anatomical Blueprint of SKILL.md</h2>
+            <p>A Skill is fundamentally a directory containing a mandatory root file named exactly <code>SKILL.md</code>[cite: 6].</p>
+            
+            <pre><code>my-skill-folder/          <-- Folder MUST be kebab-case
+├── SKILL.md              <-- MUST be capitalized exactly
+├── references/           <-- Optional: Deep technical docs (Level 3)
+├── assets/               <-- Optional: Static templates & visual guides
+└── scripts/              <-- Optional: Deterministic code executed by engine</code></pre>
+
+            <div class="diagram-container">
+                <div class="diagram-title">Progressive Disclosure Mechanics</div>
+                <div class="diagram-flow">
+                    <div class="diagram-box">Level 1: Frontmatter<br><small>(Always In-Context / Description)</small></div>
+                    <div class="diagram-arrow">➔</div>
+                    <div class="diagram-box">Level 2: SKILL.md Body<br><small>(Loaded on Match / Instructions)</small></div>
+                    <div class="diagram-arrow">➔</div>
+                    <div class="diagram-box">Level 3: Subfolders<br><small>(Loaded on Demand / Scripts & Refs)</small></div>
+                </div>
+            </div>
+
+            <p><strong>SKILL.md Skeleton Example:</strong></p>
+            <pre><code>---
+name: client-monthly-summary
+description: Prepares a monthly client financial summary for an accounting firm. Use when the user asks for a "client summary", "monthly close", or "month-end report". Do NOT use for quick single-item questions.
+---
+
+# Client Monthly Summary Instructions
+1. Format all amounts with thousand separators.
+2. Flag items exceeding tax-withholding threshold.</code></pre>
+
+            <ul>
+                <li><strong>Kebab-Case Rule:</strong> Folder names must use lowercase letters separated by hyphens (e.g., <code>client-monthly-summary</code>)[cite: 6].</li>
+                <li><strong>Tag Restrictions:</strong> Frontmatter description must NOT contain HTML/XML tags (e.g., <code>&lt;script&gt;</code>)[cite: 6].</li>
+                <li><strong>Reserved Key Terms:</strong> Skill names cannot include reserved vendor brand strings like <code>claude</code> or <code>anthropic</code>[cite: 6].</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 3: Connector Governance -->
+    <div id="m-conn" class="modal-overlay" onclick="closeModalOnOuter(event, 'm-conn')">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('m-conn')">&times;</span>
+            <h2>Connector Protocol & Governance (MCP)</h2>
+            <p>Connectors run on the open <strong>Model Context Protocol (MCP)</strong> standard[cite: 6]. They bridge AI models to third-party APIs while enforcing organizational identity and privilege boundaries[cite: 6].</p>
+            
+            <div class="diagram-container">
+                <div class="diagram-title">Connector Security Architecture</div>
+                <div class="diagram-flow">
+                    <div class="diagram-box">User Identity Permissions</div>
+                    <div class="diagram-arrow">➔</div>
+                    <div class="diagram-box">MCP Connector Scope</div>
+                    <div class="diagram-arrow">➔</div>
+                    <div class="diagram-box">Read-Only / Write Guardrails</div>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Read-Only Mode</th>
+                        <th>Write Access Mode</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Capabilities</strong></td>
+                        <td>Search, read, summarize, extract data[cite: 6].</td>
+                        <td>Edit documents, send emails, delete records, post tickets[cite: 6].</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Safety Level</strong></td>
+                        <td>High (Recommended initial state)[cite: 6].</td>
+                        <td>Requires established operational trust & recovery checks[cite: 6].</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Scope Controls</strong></td>
+                        <td>Restricted to explicit folders/channels[cite: 6].</td>
+                        <td>Per-action execution confirmation flags[cite: 6].</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Tool Access Settings:</strong> When managing 10+ active connectors, switch tool loading to <em>load-on-demand</em> to prevent prompt context bloat[cite: 6].</p>
+        </div>
+    </div>
+
+    <!-- Modal 4: Feature Matrix -->
+    <div id="m-matrix" class="modal-overlay" onclick="closeModalOnOuter(event, 'm-matrix')">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('m-matrix')">&times;</span>
+            <h2>System Feature Comparison Matrix</h2>
+            <p>Understanding the exact functional isolation between all four core system features prevents configuration overlap and unexpected model behavior[cite: 6].</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Primary Utility</th>
+                        <th>Activation State</th>
+                        <th>Mental Shortcut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Skill</strong>[cite: 6]</td>
+                        <td>Reusable, domain-specific procedural instructions[cite: 6].</td>
+                        <td>Dynamic (Sleeps until prompt matches description)[cite: 6].</td>
+                        <td><em>"I keep re-explaining HOW to do this."</em>[cite: 6]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Connector</strong>[cite: 6]</td>
+                        <td>Secure read/write integration with external systems[cite: 6].</td>
+                        <td>Session-enabled / Dynamic tool invocation[cite: 6].</td>
+                        <td><em>"I keep copy-pasting from another app."</em>[cite: 6]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Project</strong>[cite: 6]</td>
+                        <td>Isolated workspace for specific continuous bodies of work[cite: 6].</td>
+                        <td>Static (Always loaded inside project chats)[cite: 6].</td>
+                        <td><em>"These files/rules apply to EVERYTHING here."</em>[cite: 6]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Custom Instructions</strong>[cite: 6]</td>
+                        <td>Global persona and output formatting preferences[cite: 6].</td>
+                        <td>Global (Always loaded across ALL chats)[cite: 6].</td>
+                        <td><em>"I want this rule to be true everywhere."</em>[cite: 6]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal 5: Firing Engine -->
+    <div id="m-execution" class="modal-overlay" onclick="closeModalOnOuter(event, 'm-execution')">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('m-execution')">&times;</span>
+            <h2>Dynamic Firing & Built-In Engine</h2>
+            <p>The system evaluates prompt intent against frontmatter descriptions to trigger skills dynamically without mandatory manual invocation[cite: 6].</p>
+
+            <div class="diagram-container">
+                <div class="diagram-title">Automatic Firing Flowchart</div>
+                <div class="diagram-flow">
+                    <div class="diagram-box">User Prompts Task</div>
+                    <div class="diagram-arrow">➔</div>
+                    <div class="diagram-box">AI Scans Skill Frontmatter Descriptions</div>
+                    <div class="diagram-arrow">➔</div>
+                    <div class="diagram-box">Matching Skill Fires Automatically</div>
+                </div>
+            </div>
+
+            <ul>
+                <li><strong>Firing Trigger:</strong> Occurs automatically when user phrasing matches a skill's frontmatter <code>description</code> field[cite: 6].</li>
+                <li><strong>Manual Overrides:</strong> Force execution by naming the skill explicitly ("Use my brand-voice skill") or typing <code>/</code> in supported UI surfaces (e.g., Cowork)[cite: 6].</li>
+                <li><strong>Negative Triggers:</strong> Instructions in descriptions explicitly prohibiting activation for edge cases (e.g., "Do NOT use for one-off math")[cite: 6].</li>
+                <li><strong>Built-in Capabilities:</strong> Document skills (Word, Excel, PowerPoint, PDF) rely on the engine toggle <em>"Code execution and file creation"</em> under Settings -> Capabilities[cite: 6]. They do not appear as editable files in the personal skills directory[cite: 6].</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal 6: Portability Engine -->
+    <div id="m-portability" class="modal-overlay" onclick="closeModalOnOuter(event, 'm-portability')">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('m-portability')">&times;</span>
+            <h2>Cross-Platform Open Standard Architecture</h2>
+            <p>Published in late 2025 at <strong>agentskills.io</strong> and governed under the Linux Foundation's Agentic AI Foundation, the Agent Skills open standard separates skill definitions from proprietary runtime lock-in[cite: 6].</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ecosystem Tier</th>
+                        <th>Open Standard Native (Portable)</th>
+                        <th>Vendor Locked (Non-Portable)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Platforms</strong></td>
+                        <td>Claude.ai, Cowork, Claude Code, OpenCode, OpenAI Codex CLI, Google Gemini CLI, Cursor, VS Code[cite: 6].</td>
+                        <td>ChatGPT Custom GPTs, Google Gemini Gems[cite: 6].</td>
+                    </tr>
+                    <tr>
+                        <td><strong>File Format</strong></td>
+                        <td>Standardized <code>SKILL.md</code> plain text directory structure[cite: 6].</td>
+                        <td>Proprietary platform configuration portals & database entries[cite: 6].</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal 7: Security Matrix -->
+    <div id="m-security" class="modal-overlay" onclick="closeModalOnOuter(event, 'm-security')">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('m-security')">&times;</span>
+            <h2>Security Threat Matrix & Safety Audit</h2>
+            <p>Granting tools access to active computational layers and data channels creates explicit attack vectors that require rigorous verification[cite: 6].</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Threat Category</th>
+                        <th>Mechanism</th>
+                        <th>Countermeasure / Audit Rule</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Prompt Injection</strong>[cite: 6]</td>
+                        <td>Hidden text inside untrusted skill files overriding system instructions[cite: 6].</td>
+                        <td>Audit full text before installing: <em>"Read this skill and flag anything that contacts external servers."</em>[cite: 6]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Exfiltration</strong>[cite: 6]</td>
+                        <td>Skill silently transferring private context out to third-party endpoints[cite: 6].</td>
+                        <td>Disable network egress on execution toggles; limit skill origin to verified directories[cite: 6].</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Unscoped Connector Access</strong>[cite: 6]</td>
+                        <td>Granting whole-drive or broad admin privileges to a single connector[cite: 6].</td>
+                        <td>Scope connectors strictly to required subfolders; enforce read-only status initially[cite: 6].</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal 8: Practical Implementations -->
+    <div id="m-projects" class="modal-overlay" onclick="closeModalOnOuter(event, 'm-projects')">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('m-projects')">&times;</span>
+            <h2>Practical Implementation Workflows</h2>
+            <p>Deployment of Skills and Connectors follows a structured methodology centered around the <strong>Market-of-One Test</strong>: A skill is worth creating only when it captures your own repeated personal or firm-specific procedural workflow[cite: 6].</p>
+
+            <ol>
+                <li><strong>Project 1: Private Skill Creation:</strong> Utilize <code>skill-creator</code> to generate, test frontmatter triggers, and iteratively refine custom instruction formats[cite: 6].</li>
+                <li><strong>Project 2: Read-Only Connector Integration:</strong> Establish zero-copy-paste context pulling from cloud storage or email threads[cite: 6].</li>
+                <li><strong>Project 3: Skill + Connector Pipeline:</strong> Combine automated data fetching with customized procedural output formatting[cite: 6].</li>
+                <li><strong>Project 4: Standardized Handoff & Portability Test:</strong> Distribute <code>SKILL.md</code> across team directories or execute in terminal environments (e.g., Codex CLI / OpenCode)[cite: 6].</li>
+                <li><strong>Project 5: Third-Party Security Audit:</strong> Perform programmatic dry-runs and line-by-line intent checks before deploying third-party community skills[cite: 6].</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        // Modal Control Functions
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function closeModalOnOuter(event, id) {
+            if (event.target.id === id) {
+                closeModal(id);
+            }
+        }
+
+        // Quiz Questions Data (30 Advanced Items)
+        const quizData = [
+            {
+                q: "1. What fundamental architectural shift occurs when transitioning from standard AI chat prompts to utilizing Skills and Connectors?",
+                options: [
+                    "AI converts from a non-deterministic text box into an operating layer acting directly on real systems and files.",
+                    "AI increases its underlying token context window size automatically.",
+                    "AI bypasses neural network inference to execute pure Boolean logic.",
+                    "AI permanently stores personal user data within its base foundational weights."
+                ],
+                correct: 0,
+                elaboration: "Skills and Connectors turn AI from a simple text box into an operating layer that acts directly on real apps, files, and repeatable procedures."
+            },
+            {
+                q: "2. Which mandatory file must be present at the root of every Skill package?",
+                options: [
+                    "config.json",
+                    "SKILL.md",
+                    "manifest.yaml",
+                    "main.py"
+                ],
+                correct: 1,
+                elaboration: "The Agent Skills open standard requires a root file named exactly SKILL.md in uppercase."
+            },
+            {
+                q: "3. What open standard powers system Connectors to allow AI safe access to external apps?",
+                options: [
+                    "Model Context Protocol (MCP)",
+                    "Open Authorization (OAuth 2.0)",
+                    "RESTful Agent Standard (RAS)",
+                    "JSON-LD Agent Schema"
+                ],
+                correct: 0,
+                elaboration: "MCP (Model Context Protocol) is the open standard that connectors run on to interface safely with apps."
+            },
+            {
+                q: "4. Under the concept of Progressive Disclosure, what part of a Skill does the AI keep continuously in view?",
+                options: [
+                    "The entire SKILL.md body and all subfolders.",
+                    "Only the scripts directory binaries.",
+                    "The frontmatter description field.",
+                    "The reference documentation markdown files."
+                ],
+                correct: 2,
+                elaboration: "Level 1 progressive disclosure keeps only the frontmatter description in context to evaluate relevance without slowing down processing."
+            },
+            {
+                q: "5. What happens when an AI model executes an action through an authenticated Connector?",
+                options: [
+                    "It escalates privileges to system administrator level automatically.",
+                    "It inherits strictly the existing user permissions of the authenticated account.",
+                    "It bypasses corporate firewall and domain policies.",
+                    "It requests temporary OAuth tokens directly from the host operating system kernel."
+                ],
+                correct: 1,
+                elaboration: "Connectors inherit the permissions of the authenticated user account; AI cannot access what the user's account cannot reach."
+            },
+            {
+                q: "6. How should folder names containing SKILL.md files be formatted according to standard conventions?",
+                options: [
+                    "CamelCaseNaming",
+                    "snake_case_naming",
+                    "kebab-case-naming",
+                    "PASCAL_CASE_NAMING"
+                ],
+                correct: 2,
+                elaboration: "Skill directories must strictly follow lower-case kebab-case conventions (e.g., client-monthly-summary)."
+            },
+            {
+                q: "7. Which engine capability toggle MUST be enabled in Settings -> Capabilities to use built-in document generation (Word, Excel, PowerPoint, PDF)?",
+                options: [
+                    "Allow network egress",
+                    "Code execution and file creation",
+                    "Developer API forwarding",
+                    "Extended context reasoning"
+                ],
+                correct: 1,
+                elaboration: "The 'Code execution and file creation' switch under Settings -> Capabilities is the engine toggle required for document skills."
+            },
+            {
+                q: "8. You have a static set of reference guidelines that must apply to EVERY single chat in a workspace. Which feature should you use?",
+                options: [
+                    "A dynamic Skill",
+                    "A workspace Project",
+                    "A read-only Connector",
+                    "A custom MCP server"
+                ],
+                correct: 1,
+                elaboration: "Projects load context continuously into every chat within that workspace, making them ideal for static standing context."
+            },
+            {
+                q: "9. If you want a specific formatting preference to apply globally across ALL chats you ever open across your entire account, where should it be defined?",
+                options: [
+                    "In a SKILL.md frontmatter",
+                    "In Custom Instructions",
+                    "In an MCP connector manifest",
+                    "In a Project workspace file"
+                ],
+                correct: 1,
+                elaboration: "Custom Instructions apply globally to all user conversations across the entire platform account."
+            },
+            {
+                q: "10. In Claude.ai, how are Skills primarily triggered during a user session?",
+                options: [
+                    "Through mandatory slash command menus only.",
+                    "Automatically, when the user request matches the skill's description.",
+                    "By uploading a python script trigger.",
+                    "By manually clicking the execute button in the capabilities menu."
+                ],
+                correct: 1,
+                elaboration: "In Claude.ai, skills activate automatically ('fire') when plain-language prompts match the skill description."
+            },
+            {
+                q: "11. What is the recommended initial security posture when setting up a new app Connector?",
+                options: [
+                    "Grant full Write and Administrative privileges immediately.",
+                    "Enable network egress to all third-party URLs.",
+                    "Start with Read-Only access mode.",
+                    "Disable authentication checks for quicker data pulling."
+                ],
+                correct: 2,
+                elaboration: "Security best practices require starting connectors in Read-Only mode and granting write access only after establishing operational trust."
+            },
+            {
+                q: "12. What rule governs the creation of descriptions in SKILL.md frontmatter to avoid parsing errors?",
+                options: [
+                    "They must contain raw HTML tags for formatting.",
+                    "They must exceed 1000 words.",
+                    "They must NOT contain XML/HTML-style tags.",
+                    "They must be written in pure JavaScript."
+                ],
+                correct: 2,
+                elaboration: "Skill frontmatter strings must avoid angle brackets or XML-style tags to prevent markup parsing failures."
+            },
+            {
+                q: "13. What is a 'negative trigger' in a Skill description?",
+                options: [
+                    "A bug that crashes the skill during execution.",
+                    "An explicit instruction specifying scenarios when the skill should NOT activate.",
+                    "A prompt injection attack vector.",
+                    "A command that deletes temporary connector cache files."
+                ],
+                correct: 1,
+                elaboration: "Negative triggers (e.g., 'Do NOT use for single calculations') explicitly prevent skills from firing on unintended requests."
+            },
+            {
+                q: "14. Which Anthropic-maintained skill comes pre-installed in the Skills directory to assist users in building new custom skills?",
+                options: [
+                    "skill-builder-v1",
+                    "skill-creator",
+                    "mcp-generator",
+                    "agent-architect"
+                ],
+                correct: 1,
+                elaboration: "The skill-creator skill is the built-in meta-skill designed to guide users through constructing valid SKILL.md files."
+            },
+            {
+                q: "15. Which of the following consumer chat extensions is vendor-locked and CANNOT run open standard SKILL.md files natively?",
+                options: [
+                    "OpenAI Codex CLI",
+                    "ChatGPT Custom GPTs",
+                    "Google Gemini CLI",
+                    "OpenCode Terminal Agent"
+                ],
+                correct: 1,
+                elaboration: "ChatGPT Custom GPTs and Gemini Gems use proprietary vendor configurations rather than the open Agent Skills standard."
+            },
+            {
+                q: "16. In the pipeline architecture where a Skill and a Connector work together, what is the exact functional division of labor?",
+                options: [
+                    "The Skill fetches raw data; the Connector formats the output.",
+                    "The Connector fetches external data; the Skill shapes and formats the procedural output.",
+                    "The Connector executes code; the Skill manages OAuth authentication.",
+                    "The Skill provides network access; the Connector stores local file binaries."
+                ],
+                correct: 1,
+                elaboration: "Connectors provide reach into real app data; Skills provide the expertise on how to process and format that data."
+            },
+            {
+                q: "17. What evaluation metric determines if a task is genuinely worth converting into a custom Skill?",
+                options: [
+                    "The Market-of-One Test (capturing your unique, repeatable procedure).",
+                    "Whether the task requires more than 10,000 lines of Python code.",
+                    "If the task can be completed by a standard generic web search.",
+                    "If the task requires daily automated OS kernel reboots."
+                ],
+                correct: 0,
+                elaboration: "The Market-of-One test evaluates whether a procedure reflects your specific, personal, or organizational way of working."
+            },
+            {
+                q: "18. What is 'prompt injection' in the context of third-party Skills?",
+                options: [
+                    "A method for speeding up LLM token generation.",
+                    "Malicious hidden instructions within a skill designed to hijack model behavior or exfiltrate data.",
+                    "An automatic feature that updates skill dependencies.",
+                    "A technique for injecting CSS styles into chat rendering."
+                ],
+                correct: 1,
+                elaboration: "Prompt injection involves embedding unauthorized instructions inside data or skill text to manipulate AI behavior."
+            },
+            {
+                q: "19. What distinguishes a Connector scope from a Skill scope?",
+                options: [
+                    "Skills have granular scope controls while Connectors have none.",
+                    "Connectors can be scoped to specific folders/channels; Skills run with the full access scope of their parent chat session.",
+                    "Skills only apply to network data; Connectors apply to local text files.",
+                    "There is no difference; both share identical administrative sliders."
+                ],
+                correct: 1,
+                elaboration: "Connectors allow scoping (e.g., picking one specific folder); Skills inherit whatever context access the parent chat possesses."
+            },
+            {
+                q: "20. How should deterministic mathematical calculations or threshold validations be handled inside a Skill package to guarantee 100% precision?",
+                options: [
+                    "Written as conversational advice in SKILL.md body text.",
+                    "Offloaded to small executable programs inside the scripts/ subfolder.",
+                    "Embedded into the frontmatter description field.",
+                    "Delegated to global Custom Instructions."
+                ],
+                correct: 1,
+                elaboration: "Deterministic calculations are best handled by exact code scripts located in the scripts/ folder rather than relying on LLM arithmetic."
+            },
+            {
+                q: "21. If a skill fired correctly at the beginning of a conversation but produced increasingly off-target results as the session grew extremely long, what is the primary diagnosis?",
+                options: [
+                    "The SKILL.md text file has corrupted on disk.",
+                    "The chat context grew too large and degraded instruction attention; the skill file itself does not need editing.",
+                    "The Connector lost its OAuth access token.",
+                    "The kebab-case folder structure failed verification."
+                ],
+                correct: 1,
+                elaboration: "Long chat threads introduce context noise that dilutes model adherence. Starting a fresh chat resolves the issue without editing the skill."
+            },
+            {
+                q: "22. What organization governs the Model Context Protocol (MCP) and agentic infrastructure standards to prevent single-vendor control?",
+                options: [
+                    "World Wide Web Consortium (W3C)",
+                    "Linux Foundation (Agentic AI Foundation)",
+                    "OpenAI Standards Board",
+                    "ISO/IEC AI Committee"
+                ],
+                correct: 1,
+                elaboration: "The Agentic AI Foundation, hosted under the Linux Foundation, provides vendor-neutral governance for MCP and open agentic infrastructure."
+            },
+            {
+                q: "23. When evaluating a skill misbehavior, which scenario indicates that the problem lies directly within the SKILL.md file itself?",
+                options: [
+                    "The skill output is flawed from the very first response of a fresh chat.",
+                    "The skill works fine in Claude.ai but fails in Cowork.",
+                    "The skill only misbehaves after 50 continuous messages.",
+                    "The Connector fails to list cloud storage files."
+                ],
+                correct: 0,
+                elaboration: "Immediate failure on the first message of a fresh chat indicates structural or instruction flaws within the SKILL.md file."
+            },
+            {
+                q: "24. What parameter setting controls when Connector tool actions load into a conversation when many connectors are enabled?",
+                options: [
+                    "Tool Access (e.g., set to Load-on-Demand)",
+                    "Network Egress Limit",
+                    "Frontmatter Progressive Threshold",
+                    "Kebab Execution Scope"
+                ],
+                correct: 0,
+                elaboration: "The Tool Access setting (configured to load-on-demand) prevents loading dozens of connector schemas into context until requested."
+            },
+            {
+                q: "25. Which diagnostic action allows you to inspect what an installed Skill instructs the model to do without reading raw code?",
+                options: [
+                    "Run a system kernel trace.",
+                    "Ask the AI: 'Read this skill and explain in plain language what it instructs you to do.'",
+                    "Export the skill into an Excel binary spreadsheet.",
+                    "Re-authenticate the Google Drive connector."
+                ],
+                correct: 1,
+                elaboration: "Prompting the AI to summarize a skill's explicit instructions and external server calls provides an effective plain-English security audit."
+            },
+            {
+                q: "26. What naming constraint applies to reserved vendor words within custom Skill frontmatter names?",
+                options: [
+                    "They must always start with 'anthropic-'.",
+                    "They must NOT contain reserved strings like 'claude' or 'anthropic'.",
+                    "They must be written entirely in uppercase letters.",
+                    "They must include an official registered trademark symbol."
+                ],
+                correct: 1,
+                elaboration: "Reserved terms like 'claude' or 'anthropic' are restricted and cannot be used inside custom skill names."
+            },
+            {
+                q: "27. What interactive feature can certain MCP Connectors render directly inside a chat interface instead of plain text?",
+                options: [
+                    "Live UI panels / Interactive widgets",
+                    "Kernel terminal prompts",
+                    "Compiled C++ executable windows",
+                    "Direct hardware driver controls"
+                ],
+                correct: 0,
+                elaboration: "Interactive Connectors (marked with an Interactive badge) render live visual panels directly inside the chat workspace."
+            },
+            {
+                q: "28. What happens to team members using shared organizational skills when the original skill author updates the primary SKILL.md file?",
+                options: [
+                    "Shared copies update automatically to reflect the author's edits.",
+                    "All team member accounts are immediately logged out.",
+                    "Team copies permanently freeze and reject future updates.",
+                    "Team members must manually re-type the raw code."
+                ],
+                correct: 0,
+                elaboration: "Shared enterprise skills maintain dynamic links to the source file, updating automatically across the organization."
+            },
+            {
+                q: "29. Why can you install dozens of custom Skills in your library without significantly slowing down model response times?",
+                options: [
+                    "Because all skills are permanently compiled into the base LLM parameters.",
+                    "Because Progressive Disclosure loads only frontmatter descriptions initially, deferring full body text until matched.",
+                    "Because Connectors compress text files into compressed zip archives.",
+                    "Because cloud storage automatically deletes un-used skills after 5 minutes."
+                ],
+                correct: 1,
+                elaboration: "Progressive disclosure minimizes initial context overhead by evaluating brief descriptions before retrieving full instruction bodies."
+            },
+            {
+                q: "30. What single move guarantees triggering a specific Skill if automatic semantic matching fails?",
+                options: [
+                    "Explicitly name the skill in your prompt (e.g., 'Use my brand-voice skill').",
+                    "Re-install the operating system.",
+                    "Switch off the Code Execution toggle.",
+                    "Change the folder name to UPPERCASE."
+                ],
+                correct: 0,
+                elaboration: "Explicitly invoking a skill by name in plain language provides a universal fallback across all interfaces when automatic triggers miss."
+            }
+        ];
+
+        // Render Quiz Questions
+        function renderQuiz() {
+            const container = document.getElementById('quizQuestions');
+            container.innerHTML = '';
+
+            quizData.forEach((qItem, index) => {
+                const qDiv = document.createElement('div');
+                qDiv.className = 'quiz-question';
+
+                let optionsHTML = '';
+                qItem.options.forEach((opt, optIdx) => {
+                    optionsHTML += `
+                        <label class="option-label">
+                            <input type="radio" name="q${index}" value="${optIdx}">
+                            <span>${opt}</span>
+                        </label>
+                    `;
+                });
+
+                qDiv.innerHTML = `
+                    <p class="q-text">${qItem.q}</p>
+                    <div class="quiz-options">
+                        ${optionsHTML}
+                    </div>
+                `;
+                container.appendChild(qDiv);
+            });
+        }
+
+        // Submit and Calculate Score
+        function submitQuiz() {
+            let score = 0;
+            const keyContent = document.getElementById('keyContent');
+            keyContent.innerHTML = '';
+
+            quizData.forEach((qItem, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                const userAns = selected ? parseInt(selected.value) : -1;
+                const isCorrect = (userAns === qItem.correct);
+
+                if (isCorrect) {
+                    score++;
+                }
+
+                // Build Answer Key Item
+                const keyDiv = document.createElement('div');
+                keyDiv.className = `key-item ${isCorrect ? 'user-correct' : 'user-incorrect'}`;
+                
+                const userChoiceText = userAns >= 0 ? qItem.options[userAns] : 'None (Unanswered)';
+                const correctChoiceText = qItem.options[qItem.correct];
+
+                keyDiv.innerHTML = `
+                    <div class="q-title">${qItem.q}</div>
+                    <div class="ans-status">${isCorrect ? '✓ Correct' : '✗ Incorrect'}</div>
+                    <div><strong>Your Answer:</strong> ${userChoiceText}</div>
+                    ${!isCorrect ? `<div><strong>Correct Answer:</strong> ${correctChoiceText}</div>` : ''}
+                    <div class="elaboration"><strong>Technical Elaboration:</strong> ${qItem.elaboration}</div>
+                `;
+                keyContent.appendChild(keyDiv);
+            });
+
+            // Display Results
+            const resultBox = document.getElementById('resultBox');
+            const scoreText = document.getElementById('scoreText');
+            const feedbackText = document.getElementById('feedbackText');
+            const starContainer = document.getElementById('starContainer');
+            const answerKey = document.getElementById('answerKey');
+
+            resultBox.style.display = 'block';
+            answerKey.style.display = 'block';
+            scoreText.textContent = `${score} / 30`;
+
+            if (score >= 24) {
+                starContainer.style.display = 'block';
+                feedbackText.textContent = "Outstanding Performance! You have demonstrated advanced mastery of AI Operating Layer architecture, SKILL.md standards, and MCP Connector governance.";
+            } else {
+                starContainer.style.display = 'none';
+                feedbackText.textContent = "Assessment Complete. Review the detailed answer key and technical elaborations below to reinforce key architectural concepts.";
+            }
+
+            // Smooth scroll to results
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize quiz on load
+        window.onload = function() {
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
